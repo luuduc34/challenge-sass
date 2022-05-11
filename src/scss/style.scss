@@ -10,6 +10,21 @@
     background-color: $color;
 }
 
+/* $base-color: #036;
+
+@for $i from 1 through 6 {
+  li:nth-child(2n + #{$i}) {
+    background-color: lighten($base-color, $i * 5%);
+  }
+} */
+
+$base-color: #036;
+@for $i from 1 through 6 {
+  .adv-item:nth-child(#{$i}) {
+    background-color: lighten($base-color, $i * 5%);
+  }
+}
+
 body{
     font: 100% "Space Mono", monospace;
     color: variables.$grey;
