@@ -1,24 +1,26 @@
-$grey:#6b717f;
-$lightgrey:#8C8C8C;
-$white:#fff;
-$black:#000;
-$pink:#BF4080;
-$green:green;
-$red:red;
-$orange:orange;
+@use '_variables.scss';
+
+@mixin boxshad ($color){
+    -webkit-box-shadow: 10px 10px 15px -4px $color;
+    -moz-box-shadow: 10px 10px 15px -4px $color;
+    box-shadow: 10px 10px 15px -4px $color;
+}
+
+@mixin bc ($color){
+    background-color: $color;
+}
 
 body{
     font: 100% "Space Mono", monospace;
-    color: $grey;
+    color: variables.$grey;
     margin: 0;
     padding: 0;
-    background-color: $white;
+    background-color: variables.$white;
     overflow-x: hidden;
 }
 
 main{
     padding: 0 1em;
-
     article{
         display:flex;
         flex-wrap: wrap;
@@ -26,11 +28,9 @@ main{
         section{
             flex-grow: 1;
             flex-basis: 45%;
-            border: 1px $lightgrey solid;
-            -webkit-box-shadow: 10px 10px 15px -4px $grey;
-            -moz-box-shadow: 10px 10px 15px -4px $grey;
-            box-shadow: 10px 10px 15px -4px $grey;
-            padding: 16px;
+            border: 1px variables.$lightgrey solid;
+            @include boxshad (variables.$grey);
+            padding: variables.$pad16;
             margin: 16px;
             clear: both;
             overflow: auto;
@@ -43,9 +43,9 @@ main{
         }
 
         code{
-            background: $black;
-            border: 1px solid $grey;
-            color: $lightgrey;
+            background: variables.$black;
+            border: 1px solid variables.$grey;
+            color: variables.$lightgrey;
             page-break-inside: avoid;
             font-family: monospace;
             font-size: 15px;
@@ -56,7 +56,7 @@ main{
             padding: 1em 1.5em;
             display: block;
             word-wrap: break-word; 
-            
+
             .before{
                 float: left;
                 width: 40%;
@@ -73,7 +73,7 @@ main{
 h1,
 h2,
 h3 {
-    color: $pink;
+    color: variables.$pink;
 }
 
 h1 {
@@ -83,37 +83,34 @@ h1 {
 h3 {
     text-align: center;
     font-size: 1.5em;
-    padding: 32px;
+    padding: variables.$pad16*2;
     margin-bottom: 0px;
 }
 
 .messages {
-    padding: 16px;
+    padding: variables.$pad16;
 }
 
 .sew {
-    border: 1px solid $lightgrey;
-    padding: 16px;
-    color: $white;
+    border: 1px solid variables.$lightgrey;
+    padding: variables.$pad16;
+    color: variables.$white;
 }
 
 .success {
-    background-color: $green;
+    @include bc ($color:variables.$green);
     @extend .sew;
-}
-    
-.error {
-    background-color: $red;
+} 
+
+.error {    
+    @include bc ($color:variables.$red);
     @extend .sew;
     &:hover {
-        background-color:$green;
+        background-color:variables.$green;
     }
-}
-    
+} 
+
 .warning {
-    background-color: $orange;
+    @include bc ($color:variables.$orange);
     @extend .sew;
 }
-
-
-
